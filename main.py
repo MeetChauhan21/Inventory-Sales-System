@@ -4,7 +4,6 @@ from datetime import datetime
 
 DB_PATH = '../database/inventory.db'
 
-# ---------- Add Product ----------
 def add_product(name, price, quantity):
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
@@ -13,7 +12,6 @@ def add_product(name, price, quantity):
     conn.close()
     print(f"Product '{name}' added successfully!")
 
-# ---------- Update Product ----------
 def update_product(product_id, name=None, price=None, quantity=None):
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
@@ -27,7 +25,6 @@ def update_product(product_id, name=None, price=None, quantity=None):
     conn.close()
     print(f"Product ID {product_id} updated successfully!")
 
-# ---------- Delete Product ----------
 def delete_product(product_id):
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
@@ -36,7 +33,6 @@ def delete_product(product_id):
     conn.close()
     print(f"Product ID {product_id} deleted successfully!")
 
-# ---------- Record Sale ----------
 def record_sale(product_id, quantity_sold):
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
@@ -58,7 +54,6 @@ def record_sale(product_id, quantity_sold):
     conn.close()
     print(f"Sale recorded for product '{name}'! Quantity sold: {quantity_sold}")
 
-# ---------- View Products ----------
 def view_products():
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
@@ -70,7 +65,6 @@ def view_products():
         products_list += f"ID: {row[0]}, Name: {row[1]}, Price: {row[2]}, Quantity: {row[3]}\n"
     return products_list
 
-# ---------- Sales Chart ----------
 def sales_chart():
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
@@ -94,4 +88,5 @@ def sales_chart():
     plt.xlabel('Product')
     plt.ylabel('Quantity Sold')
     plt.title('Sales per Product')
+
     plt.show()
