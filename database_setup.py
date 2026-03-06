@@ -5,7 +5,6 @@ DB_PATH = '../database/inventory.db'
 conn = sqlite3.connect(DB_PATH)
 cursor = conn.cursor()
 
-# Create Products table
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS Products (
     product_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -15,7 +14,6 @@ CREATE TABLE IF NOT EXISTS Products (
 )
 """)
 
-# Create Sales table
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS Sales (
     sale_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -28,4 +26,5 @@ CREATE TABLE IF NOT EXISTS Sales (
 
 conn.commit()
 conn.close()
+
 print("Database and tables created successfully!")
