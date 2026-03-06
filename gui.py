@@ -2,12 +2,10 @@ import tkinter as tk
 from tkinter import messagebox, simpledialog
 from main import add_product, update_product, delete_product, record_sale, view_products, sales_chart
 
-# ---------- Main Window ----------
 root = tk.Tk()
 root.title("Inventory & Sales System")
 root.geometry("400x500")
 
-# ---------- Functions ----------
 def add_product_gui():
     name = simpledialog.askstring("Input", "Enter product name:")
     if not name:
@@ -17,7 +15,6 @@ def add_product_gui():
     price_input = simpledialog.askstring("Input", "Enter product price:")
     qty_input = simpledialog.askstring("Input", "Enter product quantity:")
 
-    # Validate price
     try:
         price = float(price_input)
         if price < 0:
@@ -26,7 +23,6 @@ def add_product_gui():
         messagebox.showerror("Error", "Invalid price! Must be a positive number.")
         return
 
-    # Validate quantity
     try:
         qty = int(qty_input)
         if qty < 0:
@@ -51,7 +47,6 @@ def update_product_gui():
 
     price = None
     qty = None
-    # Validate price if entered
     if price_input:
         try:
             price = float(price_input)
@@ -61,7 +56,6 @@ def update_product_gui():
             messagebox.showerror("Error", "Invalid price! Must be a positive number.")
             return
 
-    # Validate quantity if entered
     if qty_input:
         try:
             qty = int(qty_input)
@@ -112,3 +106,4 @@ tk.Button(root, text="View Products", width=25, command=view_products_gui).pack(
 tk.Button(root, text="View Sales Chart", width=25, command=sales_chart).pack(pady=5)
 
 root.mainloop()
+
